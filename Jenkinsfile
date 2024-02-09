@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     sh 'chmod +x mvnw' // Donner les autorisations d'exécution au fichier mvnw
-                    withSonarQubeEnv('My SonarQube Server') {
+                    withSonarQubeEnv('Sonar_Qube') {
                         sh './mvnw clean package sonar:sonar'
                     }
                 }
