@@ -1,15 +1,24 @@
- stage('Build') {
-    steps {
-        sh 'mvn compile'
-    }
-}
-stage('SonarQube analysis') {
-    environment {
-        scannerHome = tool 'SonarQube Scanner' // the name you have given the Sonar Scanner (Global Tool Configuration)
-    }
-    steps {
-        withSonarQubeEnv(installationName: 'Sonar_Qube') {
-            sh './mvnw sonar:sonar'
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+
+        stage('SonarQube analysis') {
+            environment {
+                scannerHome = tool 'SonarQube Scanner'
+            }
+            steps {
+                script {
+                    withSonarQubeEnv(installationName: 'Sonar_Qube') {
+                        sh './mvnw sonar:sonar'
+                    }
+                }
+            }
         }
     }
 }
