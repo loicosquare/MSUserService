@@ -15,7 +15,7 @@ stage('SonarQube analysis') {
     }
     steps {
         withSonarQubeEnv(installationName: 'Sonar_Qube') {
-            sh 'mvn sonar:sonar'
+            sh './mvnw sonar:sonar'
         }
     }
 }
