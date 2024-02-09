@@ -6,7 +6,11 @@ pipeline {
             steps {
                 script {
                     sh 'chmod +x mvnw' // Donner les autorisations d'exécution au fichier mvnw
+                    environment {
+                        scannerHome = tool 'SonarQube Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+                    }
                     withSonarQubeEnv('Sonar_Qube') {
+                        //sh "${scannerHome}/bin/sonar-scanner -X"
                         sh './mvnw clean package sonar:sonar'
                     }
                 }
