@@ -4,8 +4,11 @@ pipeline {
         stage("Build & SonarQube Analysis") {
             agent any
             steps {
-                withSonarQubeEnv('Sonar_Qube') {
-                    sh './mvnw clean package sonar:sonar'
+                script {
+                    sh 'chmod +x mvnw' // Donner les autorisations d'exécution au fichier mvnw
+                    withSonarQubeEnv('My SonarQube Server') {
+                        sh './mvnw clean package sonar:sonar'
+                    }
                 }
             }
         }
