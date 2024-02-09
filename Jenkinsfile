@@ -11,7 +11,7 @@ pipeline {
                     }
                     withSonarQubeEnv('Sonar_Qube') {
                         //sh "${scannerHome}/bin/sonar-scanner -X"
-                        sh './mvnw clean package sonar:sonar'
+                        sh './mvnw sonar:sonar'
                     }
                 }
             }
