@@ -1,5 +1,6 @@
 package com.tech.userService.entities;
 
+import com.tech.userService.external.entities.Game;
 import com.tech.userService.external.entities.Rating;
 import lombok.*;
 
@@ -32,4 +33,7 @@ public class User {
 
     @Transient //not to be stored in db
     private List<Rating> ratings=new ArrayList<>();
+
+    @Transient //not to be stored in db
+    private List<Game> games = new ArrayList<>();
 }

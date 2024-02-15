@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     /**
-     * @param user
-     * @return User
+     * @param user : User
+     * @return User : User saved
      */
     @Override
     public User saveUser(User user) {
@@ -47,11 +47,10 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @return
+     * @return List<User>
      */
     @Override
     public List<User> getAllUser() {
-        //implement RATING SERVICE CALL: USING REST TEMPLATE
         List<User> users = userRepository.findAll();
 
         users.forEach(user -> {
@@ -78,7 +77,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @param userId
+     * @param userId : Id of the user.
      * @return User
      */
     @Override
