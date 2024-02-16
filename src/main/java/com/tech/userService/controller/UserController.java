@@ -2,6 +2,7 @@ package com.tech.userService.controller;
 
 import com.tech.userService.entities.User;
 import com.tech.userService.services.UserService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -39,6 +40,7 @@ public class UserController {
     @GetMapping("/{userId}")
     //@CircuitBreaker(name = "ratingEnterpriseCircuitBreaker", fallbackMethod = "ratingEnterpriseFallback")
     @Retry(name = "ratingEnterpriseService", fallbackMethod = "ratingEnterpriseFallback")
+    @RateLimiter(name = "userRateLimiter", fallbackMethod = "ratingEnterpriseFallback")
     public ResponseEntity<User> getSingleUser(@PathVariable String userId) {
 
         logger.info("Get Single User Handler: UserController");
