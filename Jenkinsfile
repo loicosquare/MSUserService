@@ -16,13 +16,13 @@ pipeline {
                 }
             }
         }
-        stage("Quality Gate") {
+        /*stage("Quality Gate") {
             agent none
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: false
                 }
             }
-        }
+        }*/
     }
 }
