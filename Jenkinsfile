@@ -10,19 +10,19 @@ pipeline {
                         scannerHome = tool 'SonarQube Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
                     }
                     withSonarQubeEnv('Sonar_Qube') {
-                        //sh "${scannerHome}/bin/sonar-scanner -X"
+                        sh "${scannerHome}/bin/sonar-scanner -X"
                         sh './mvnw sonar:sonar'
                     }
                 }
             }
         }
-        /*stage("Quality Gate") {
+        stage("Quality Gate") {
             agent none
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: false
                 }
             }
-        }*/
+        }
     }
 }
